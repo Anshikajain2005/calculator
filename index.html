@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>calculator</title>
+  <style>
+    .container {
+      margin-top: 150px;
+      
+      border-color: black;
+      
+    }
+
+    button {
+      width:70px;
+      height: 35px;
+      border-radius: 4px;
+      margin:0px;
+   
+
+    }
+
+    #display{
+      padding: 15px;
+      border-radius: 5px;
+      width: 270px;
+    }
+    #memory{
+      padding: 15px;
+      border-radius: 5px;
+      width: 230px;
+      border:none;
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container" align="center">
+    <input type="text" id="memory"><br>
+    <input type="text" id="display"><br></br>
+   
+
+    
+    <div class="row1">
+    <button onclick="appendToDisplay('7')">7</button>
+    <button onclick="appendToDisplay('8')">8</button>
+    <button onclick="appendToDisplay('9')">9</button>
+    <button onclick="selectop('*')">*</button></div>
+    <div class="row2">
+    <button onclick="appendToDisplay('4')">4</button>
+    <button onclick="appendToDisplay('5')">5</button>
+    <button onclick="appendToDisplay('6')">6</button>
+    <button onclick="selectop('-')">-</button></div>
+    <div class="row3">
+    <button onclick="appendToDisplay('1')">1</button>
+    <button onclick="appendToDisplay('2')">2</button>
+    <button onclick="appendToDisplay('3')">3</button>
+    <button onclick="selectop('+')">+</button></div>
+    <div class="row4">
+    <button onclick="appendToDisplay('0')">0</button>
+    <button onclick="appendToDisplay('.')">.</button>
+    <button onclick="selectop('/')">/</button>
+    <button onclick="result()">=</button></div>
+    <div class="row">
+      <button onclick="clearDisplay()">Clear</button>
+      <button onclick=""><img src="icons8-clear-symbol-30.png" width=25px height="10px"></button>
+      <button onclick="selectop('num*num')">sq</button></div>
+
+  </div>
+
+  <script>
+    let num1 = 0;
+    let num2 = 0;
+    let operation = ""
+    function appendToDisplay(v) {
+      let display = document.getElementById("display")
+      
+        display.value += v
+    }
+    function clearDisplay() {
+      document.getElementById("display").value = ""
+    }
+    function selectop(op) {
+      operation = op;
+      num1 = document.getElementById("display").value
+      document.getElementById("memory").value = num1 + operation
+      clearDisplay()
+    }
+    function result() {
+      let display = document.getElementById("display")
+      num2 = display.value
+      let exp = num1 + operation + num2
+      document.getElementById("memory").value = exp
+      
+      let ans = eval(exp)
+      display.value = ans
+    }
+  </script>
+</body>
+<!--- enter the number <input type="text" name="text" id="num1">
+   <br></br>
+ enter the number<input type="text" name="text" id="num2" ><br></br>
+ <button id="calculate">sum calculate</button>
+ <p id="result">result will appear</p>
+<script>
+    function sum(){
+    let num1=parseFloat(document.getElementById("num1").value);
+    let num2=parseFloat(document.getElementById("num2").value);
+    let sum=num1+num2
+    document.getElementById("result").innerText="sum is" + sum}
+    let button=document.getElementById("calculate")
+    button.addEventListener('click',sum)-->
+
+</html>
